@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+//import QuizManager from "./components/QuizManager";
+import React from "react";
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {Container,Row,Col} from "react-bootstrap";
+import Welcome from "./components/Home";
+import Footer from './components/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//       <p>
+//         Maths Quiz     
+//       </p> 
+//         </header> 
+//         <QuizManager/>
+//     </div>
+// );
+return (
+  <Router>
+      
+      <Container>
+          <Row>
+              <Col lg={45}>
+                 <Switch>
+                      <Route   path="/"  exact  component={Welcome}/>
+                
+                 </Switch>
+              </Col>
+          </Row>
+      </Container>
+      <Footer/>
+  </Router>
+);
 }
 
 export default App;
