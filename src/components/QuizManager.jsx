@@ -4,7 +4,7 @@ import { Button, Card, CardContent, Typography, Box, TextField } from "@mui/mate
 import questions from "./questions";
 const QuizManager = () => {
     const [score, setScore] = useState(0);
-    const [question, setQuestion] = useState(getRandomQuestion); // Getting questions from questions.js
+    const [question, setQuestion] = useState(questions[0]); // Getting questions from questions.js
     const [userInput, setUserInput] = useState("");
     const [feedback, setFeedback] = useState("");
     // Function to get a random question
