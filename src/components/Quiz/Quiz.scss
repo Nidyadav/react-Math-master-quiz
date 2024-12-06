@@ -13,7 +13,8 @@
 .quiz-title {
     margin-bottom: 20px;
     font-weight: bold;
-    color: #1976d2; /* Primary color */
+    color: #1976d2;
+    /* Primary color */
 }
 
 .quiz-question {
@@ -38,15 +39,11 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: 500;
-    color: #d32f2f; /* Red for feedback */
+    color: #d32f2f;
+    /* Red for feedback */
 }
 
-.quiz-score {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #1976d2;
-}
+
 .question-count span {
     font-size: 28px;
-  }
+}

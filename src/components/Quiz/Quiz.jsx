@@ -2,6 +2,8 @@ import { Card } from "react-bootstrap";
 import questions from "../questions";
 import { React, useState } from "react";
 import { CardContent, TextField, Typography } from "@mui/material";
+import ScoreCard from "../score/ScoreCard";
+
 function Quiz() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userInput, setUserInput] = useState("");
@@ -17,6 +19,10 @@ function Quiz() {
         }
         setUserInput("");
     }
+    const resetQuiz = () => {
+        setScore(0);
+        setCurrentQuestion(0);
+    };
     const handleSubmit = () => {
         if (userInput === answer) {
             setScore(score + 1);
@@ -26,10 +32,8 @@ function Quiz() {
     return (
         <div>
             {showScore ? (
-                <div className='quiz-score'>
-                    You scored  {score} out of {questions.length}
-                    <span hidden={score<questions.length/2}>🎉</span>
-                </div>
+                <ScoreCard score={score} totalQuestions={questions.length} onTryAgain={resetQuiz} />
+
             ) : (
                 <div className="quiz-container">
                     <Card className="quiz-card">
@@ -37,7 +41,7 @@ function Quiz() {
                             <Typography variant="h4" className="quiz-title">
                                 Math Master Quiz 🧮
                             </Typography>
-                            <Typography variant="h8" className="question-count">Question {currentQuestion+1}/{questions.length}</Typography> 
+                            <Typography variant="h8" className="question-count">Question {currentQuestion + 1}/{questions.length}</Typography>
                             <Typography variant="h6" className="quiz-question">
                                 {question}
                             </Typography>
@@ -55,7 +59,7 @@ function Quiz() {
                                 className="quiz-button"
                                 disabled={!userInput.trim()}>
                                 Submit </button> <br></br>
-                            </CardContent>
+                        </CardContent>
                     </Card>
                 </div>)}
         </div>
