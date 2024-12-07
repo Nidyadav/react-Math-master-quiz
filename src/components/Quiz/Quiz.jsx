@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import questions from "../questions";
 import { React, useState } from "react";
-import { CardContent, TextField, Typography } from "@mui/material";
+import { CardContent, TextField, Typography, Box } from "@mui/material";
 import ScoreCard from "../score/ScoreCard";
 
 function Quiz() {
@@ -22,6 +22,7 @@ function Quiz() {
     const resetQuiz = () => {
         setScore(0);
         setCurrentQuestion(0);
+        setShowScore(false);
     };
     const handleSubmit = () => {
         if (userInput === answer) {
@@ -36,31 +37,33 @@ function Quiz() {
 
             ) : (
                 <div className="quiz-container">
-                    <Card className="quiz-card">
-                        <CardContent>
-                            <Typography variant="h4" className="quiz-title">
-                                Math Master Quiz 🧮
-                            </Typography>
-                            <Typography variant="h8" className="question-count">Question {currentQuestion + 1}/{questions.length}</Typography>
-                            <Typography variant="h6" className="quiz-question">
-                                {question}
-                            </Typography>
-                            <TextField
-                                label="Your answer"
-                                variant="outlined"
-                                value={userInput}
-                                onChange={(e) => setUserInput(e.target.value)}
-                                fullWidth
-                                className="quiz-input" />
-                            <button
-                                variant="Contained"
-                                color="primary"
-                                onClick={handleSubmit}
-                                className="quiz-button"
-                                disabled={!userInput.trim()}>
-                                Submit </button> <br></br>
-                        </CardContent>
-                    </Card>
+                    <Box sx={{ maxWidth: 600, margin: "20px auto", textAlign: "center" }}>
+                        <Card className="quiz-card">
+                            <CardContent>
+                                <Typography variant="h4" className="quiz-title">
+                                    Math Master Quiz 🧮
+                                </Typography>
+                                <Typography variant="h8" className="question-count">Question {currentQuestion + 1}/{questions.length}</Typography>
+                                <Typography variant="h6" className="quiz-question">
+                                    {question}
+                                </Typography>
+                                <TextField
+                                    label="Your answer"
+                                    variant="outlined"
+                                    value={userInput}
+                                    onChange={(e) => setUserInput(e.target.value)}
+                                    fullWidth
+                                    className="quiz-input" />
+                                <button
+                                    variant="Contained"
+                                    color="primary"
+                                    onClick={handleSubmit}
+                                    className="quiz-button"
+                                    disabled={!userInput.trim()}>
+                                    Submit </button> <br></br>
+                            </CardContent>
+                        </Card>
+                    </Box>
                 </div>)}
         </div>
     );
