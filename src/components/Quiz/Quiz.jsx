@@ -1,7 +1,7 @@
-import { Card } from "react-bootstrap";
+
 import questions from "../questions";
 import { React, useState } from "react";
-import { CardContent, TextField, Typography, Box } from "@mui/material";
+import { Button, Card, CardContent, Typography, Box, TextField } from "@mui/material";
 import ScoreCard from "../score/ScoreCard";
 
 function Quiz() {
@@ -31,16 +31,16 @@ function Quiz() {
         setTimeout(() => loadNextQuestion(), 1000);
     };
     return (
-        <div>
+        <div className="quiz-container">
             {showScore ? (
                 <ScoreCard score={score} totalQuestions={questions.length} onTryAgain={resetQuiz} />
 
             ) : (
-                <div className="quiz-container">
+                <div>
                     <Box sx={{ maxWidth: 600, margin: "20px auto", textAlign: "center" }}>
                         <Card className="quiz-card">
                             <CardContent>
-                                <Typography variant="h4" className="quiz-title">
+                                <Typography variant="h4" className="quiz-title" gutterBottom>
                                     Math Master Quiz 🧮
                                 </Typography>
                                 <Typography variant="h8" className="question-count">Question {currentQuestion + 1}/{questions.length}</Typography>
@@ -54,17 +54,19 @@ function Quiz() {
                                     onChange={(e) => setUserInput(e.target.value)}
                                     fullWidth
                                     className="quiz-input" />
-                                <button
+                                <Button
                                     variant="Contained"
                                     color="primary"
                                     onClick={handleSubmit}
                                     className="quiz-button"
                                     disabled={!userInput.trim()}>
-                                    Submit </button> <br></br>
+                                    Submit </Button> <br></br>
                             </CardContent>
                         </Card>
                     </Box>
-                </div>)}
+                </div>
+            )
+            }
         </div>
     );
 } export default Quiz;
