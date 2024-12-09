@@ -31,13 +31,13 @@ function Quiz() {
         setTimeout(() => loadNextQuestion(), 1000);
     };
     return (
-        <div className="quiz-container">
+        <div>
             {showScore ? (
                 <ScoreCard score={score} totalQuestions={questions.length} onTryAgain={resetQuiz} />
 
             ) : (
                 <div>
-                    <Box sx={{ maxWidth: 600, margin: "20px auto", textAlign: "center" }}>
+                    <Box className="quiz-container" sx={{  textAlign: "center" }}>
                         <Card className="quiz-card">
                             <CardContent>
                                 <Typography variant="h4" className="quiz-title" gutterBottom>
@@ -48,17 +48,17 @@ function Quiz() {
                                     {question}
                                 </Typography>
                                 <TextField
-                                    label="Your answer"
+                                    label="Your Answer"
                                     variant="outlined"
                                     value={userInput}
                                     onChange={(e) => setUserInput(e.target.value)}
                                     fullWidth
-                                    className="quiz-input" />
-                                <Button
-                                    variant="Contained"
-                                    color="primary"
-                                    onClick={handleSubmit}
+                                    sx={{ marginBottom: "20px" }}
+                                    />
+                                    <Button
                                     className="quiz-button"
+                                    variant="contained"
+                                    onClick={handleSubmit}
                                     disabled={!userInput.trim()}>
                                     Submit </Button> <br></br>
                             </CardContent>
