@@ -3,7 +3,7 @@ import Quiz from './components/Quiz/Quiz';
 import React from "react";
 function App() {
   return (
-    <div className='Mathapp'>
+    <div id="mathapp" className='Mathapp'>
       <Quiz></Quiz>
     </div>
   );

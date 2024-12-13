@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import App from './App';
+import Quiz from './components/Quiz/Quiz';
 
-test('renders learn react link', () => {
+test('renders Math app', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  screen.debug();
+  const appDiv = screen.getByRole('heading', { level:4});
+  const heading=within(appDiv).getByText('Math Master Quiz 🧮');
+  expect(heading).toBeInTheDocument();
 });

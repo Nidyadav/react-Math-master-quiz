@@ -1,7 +1,7 @@
 const questions = [
     {
         id: 1,
-        question: "What is the square 4?",
+        question: "What is the square of 4?",
         answer: "16",
     },
     {
