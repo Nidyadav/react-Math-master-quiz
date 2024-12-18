@@ -44,13 +44,15 @@ it('should show table with saved names when showScore  is true', ()=>{
 
     fireEvent.change(input, { target: { value: 'John Doe' } });
     fireEvent.click(saveButton);
-    screen.debug();
-     // Assert that the table is now rendered
+     // Assert that the table is now rendered because showScore is updated inside hadleSave
      const table = screen.getByRole('table');
      expect(table).toBeInTheDocument();
      const rows=screen.getAllByRole('row');
      expect(rows).toHaveLength(4);
      expect(screen.getByText('John Doe')).toBeInTheDocument;
+     expect(screen.getByText('Alice')).toBeInTheDocument;
+     expect(screen.getByText('Bob')).toBeInTheDocument;
+     expect(screen.getByText('95')).toBeInTheDocument;
   
   });
 });
