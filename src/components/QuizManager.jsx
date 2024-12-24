@@ -1,68 +1,83 @@
 
 import { React, useState } from "react";
-import { Button, Card, CardContent, Typography, Box, TextField } from "@mui/material";
-import questions from "./questions";
+import { Button, Card, CardContent, Typography, Box} from "@mui/material";
+import hardQuestions from "./hardQuestions";
+import easyQuestions from "./easyQuestions";
+import mediumQuestions from "./mediumQuestions";
+import Quiz from "./Quiz/Quiz";
 const QuizManager = () => {
-    const [score, setScore] = useState(0);
-    const [question, setQuestion] = useState(questions[0]); // Getting questions from questions.js
-    const [userInput, setUserInput] = useState("");
-    const [feedback, setFeedback] = useState("");
-    // Function to get a random question
-    function getRandomQuestion() {
-        const randomIndex = Math.floor(Math.random() * questions.length);
-        return questions[randomIndex];
-    }
-    // Function to load a new random question
-    function loadNextQuestion() {
-        setQuestion(getRandomQuestion());
-        setFeedback(""); // Clear feedback for the next question
-        setUserInput(""); // Clear the input field
-    }
 
-    const handleSubmit = () => {
-        if (userInput === question.answer) { // Compare user input with the correct answer
-            setScore(score + 1);
-            setFeedback("Correct! 🎉");
-        } else {
-            setFeedback(`Oops! The correct answer was ${question.answer}.`);
+    const [level, setLevel] = useState(""); // Track the selected difficulty level
+    const [questions, setQuestions] = useState([]); // Store the selected questions
+    const handleStartQuiz = (selectedLevel) => {
+        setLevel(selectedLevel);
+
+        // Load questions based on selected level
+        switch (selectedLevel) {
+            case "Easy":
+                setQuestions(easyQuestions);
+                break;
+            case "Medium":
+                setQuestions(mediumQuestions);
+                break;
+            case "Hard":
+                setQuestions(hardQuestions);
+                break;
+            default:
+                setQuestions([]);
         }
-        setTimeout(() => loadNextQuestion(), 2000); // Load the next question after 2 seconds
     };
     return (
-        <Box sx={{ maxWidth: 600, margin: "20px auto", textAlign: "center" }}>
-            <Card sx={{ padding: "20px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>
-                <CardContent>
-                    <Typography variant="h4" gutterBottom>
-                        Math Master Quiz  🧮
-                    </Typography>
-                    <Typography variant="h6" sx={{ marginBottom: "20px" }}>
-                        Question: {question.question}
-                    </Typography>
-                    <TextField
-                        label="Your Answer"
-                        variant="outlined"
-                        value={userInput}
-                        onChange={(e) => setUserInput(e.target.value)}
-                        fullWidth
-                        sx={{ marginBottom: "20px" }}
-                    />
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleSubmit}
-                        sx={{ marginRight: "10px" }}
-                    >
-                        Submit
-                    </Button>
-                    <Typography variant="h6" color="secondary" sx={{ marginTop: "20px" }}>
-                        {feedback}
-                    </Typography>
-                    <Typography variant="body1" sx={{ marginTop: "20px" }}>
-                        Your score: {score}
-                    </Typography>
-                </CardContent>
-            </Card>
-        </Box>
+            <div className="Mathapp">
+            {level === "" ? (
+                <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    minHeight="100vh"
+                    sx={{ backgroundColor: "#f5f5f5", padding: "20px" }}
+                >
+                    <Card sx={{ padding: "20px", maxWidth: "400px", width: "100%", textAlign: "center" }}>
+                        <CardContent>
+                            <Typography variant="h4" color="primary" gutterBottom>
+                                Welcome to Math Master! 🧮
+                            </Typography>
+                            <Typography variant="body1" sx={{ marginBottom: "20px" }}>
+                                Choose a level based on your age.
+                            </Typography>
+                            <Button
+                        
+                                variant="contained"
+                                color="primary"
+                                sx={{ marginBottom: "10px", width: "100%" }}
+                                onClick={() => handleStartQuiz("Easy")}
+                            >
+                            Kids(Age 5-8)
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                sx={{ marginBottom: "10px", width: "100%" }}
+                                onClick={() => handleStartQuiz("Medium")}
+                            >
+                                kids(Age 9-12)
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="success"
+                                sx={{ width: "100%" }}
+                                onClick={() => handleStartQuiz("Hard")}
+                            >
+                                kids(Age 13-16)
+                            </Button>
+                        </CardContent>
+                    </Card>
+                </Box>
+            ) : (
+                <Quiz questions={questions} level={level} />
+            )}
+        </div>
     );
+
 };
 export default QuizManager;
