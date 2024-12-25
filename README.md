@@ -1,4 +1,4 @@
-# Maths Master: Interactive Learning Quiz Game (8 - 11 yr olds)
+# Maths Master: Interactive Learning Quiz Game (5 - 16 yr olds)
 
 ## Overview 
 Maths Master is an engaging React-based educational quiz application designed to help users improve their mathematical skills through interactive challenges. The game offers multiple difficulty levels, real-time scoring, and an intuitive user interface.
@@ -17,11 +17,11 @@ Maths Master is an engaging React-based educational quiz application designed to
 - Progress bar: Show progress in the quiz.
 
 ## Src Components
-- QuestionCard: Displays the question and options/input.
-- ScoreBoard: Shows current score and time left.
-- DifficultySelector: Allows the player to select difficulty.
-- QuizManager: Handles the game logic.
+- Quiz:Displays the question.
+- ScoreCard: Shows current score and time left. 
+- QuizManager: Allows the player to select difficulty and loads questions  accordingly.
+-Different files containing questions like easy, medium and hard.
 
-src/ |-- components/ | |-- QuestionCard.js | |-- ScoreBoard.js | |-- DifficultySelector.js |-- App.js |-- index.js |-- styles.css
+
 
 
