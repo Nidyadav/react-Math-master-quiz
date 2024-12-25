@@ -1,6 +1,7 @@
 {
   "name": "math-quiz",
   "version": "0.1.0",
+  "homepage": "https://Nidyadav.github.io/react-Math-master-quiz",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -17,6 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
@@ -42,6 +45,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-proposal-private-property-in-object":"7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "gh-pages": "^6.2.0"
   }
 }
