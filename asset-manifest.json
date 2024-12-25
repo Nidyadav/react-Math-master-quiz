@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-Math-master-quiz/static/css/main.ab206644.css",
+    "main.js": "/react-Math-master-quiz/static/js/main.948a0887.js",
+    "static/js/453.6d9ab3c9.chunk.js": "/react-Math-master-quiz/static/js/453.6d9ab3c9.chunk.js",
+    "index.html": "/react-Math-master-quiz/index.html",
+    "main.ab206644.css.map": "/react-Math-master-quiz/static/css/main.ab206644.css.map",
+    "main.948a0887.js.map": "/react-Math-master-quiz/static/js/main.948a0887.js.map",
+    "453.6d9ab3c9.chunk.js.map": "/react-Math-master-quiz/static/js/453.6d9ab3c9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab206644.css",
+    "static/js/main.948a0887.js"
+  ]
+}
